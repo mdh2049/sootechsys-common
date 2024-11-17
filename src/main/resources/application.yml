@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: common
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop 
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        use_sql_comments: true
+    defer-datasource-initialization: true
+
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("sootechsystems-common-service-spring-security-jwtsootechsystems-common-service-jwtsootechsystems-common-service-jwtsootechsystems-common-service-jwtsootechsystems-common-service-jwt"))
+  secret: c29vdGVjaHN5c3RlbXMtY29tbW9uLXNlcnZpY2Utc3ByaW5nLXNlY3VyaXR5LWp3dHNvb3RlY2hzeXN0ZW1zLWNvbW1vbi1zZXJ2aWNlLWp3dHNvb3RlY2hzeXN0ZW1zLWNvbW1vbi1zZXJ2aWNlLWp3dHNvb3RlY2hzeXN0ZW1zLWNvbW1vbi1zZXJ2aWNlLWp3dHNvb3RlY2hzeXN0ZW1zLWNvbW1vbi1zZXJ2aWNlLWp3dA==
+  token-validity-in-seconds: 86400
+
+logging:
+  level:
+    kr.co.sootechsys: DEBUG
